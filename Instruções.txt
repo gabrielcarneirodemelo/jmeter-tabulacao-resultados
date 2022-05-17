@@ -2,17 +2,17 @@ Requisitos:
 	* Necessita ter o python;
 
 	* Necessita ter o PostgreSQL;
+	* Necessita instalar as bibliotecas do Python contidas nos arquivos.
 
-No Postgresql criar o database"Tabular_arquivos_csv";
+No Postgresql criar o database"Arquivos_sem_tabular";
 
 Configurar o nome do Host e senha no arquivo "Configuracao_banco.py";
 
 Inserir dentro do mesmo diretório do script o arquivo que será inserido no banco.
 OBS: DEVE HAVER APENAS 1 ARQUIVO .CSV NO DIRETÓRIO pois o script identifica o arquivo sozinho
 
-Executar o comando no cmd: python Script_insercao_tabulado.py
+Executar com o comando: python script_insercao_SEM_tabular.py
 
-Para utilizar as planilhas automatizadas basta instalar e configurar o ODBC para que haja a conexão com
-o banco de dados.
+Depois dos dados serem inseridos no banco basta linkar com as planilhas de Excel ou PowerBI por exemplo.
 
 OBS: O teste do Jmeter sempre executar pelo Transaction Controller nunca Grupo de Usuários 
