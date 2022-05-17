@@ -1,9 +1,12 @@
+A idéia surgiu da necessidade de solucionar o problema de tabulação de logs muito grandes do Jmeter, chegando
+a 81 milhões de linhas.
+
 Requisitos:
 	* Necessita ter o python;
 	* Necessita ter o PostgreSQL;
 	* Necessita instalar as bibliotecas do Python contidas nos arquivos.
 
-No Postgresql criar o database"Arquivos_sem_tabular";
+No Postgresql criar a database"Arquivos_sem_tabular";
 
 Configurar o nome do Host e senha no arquivo "Configuracao_banco.py";
 
@@ -24,3 +27,16 @@ Depois dos dados serem inseridos no banco basta linkar com as planilhas de Excel
 OBS: O teste do Jmeter sempre executar pelo Transaction Controller nunca Grupo de Usuários 
 
 OBS: Sempre que foi registrar um novo teste, apagar o antigo para não correr riscos de conflitos de dados
+
+O que fazem os scripts?
+	1 - script_insercao_SEM_tabular -> Vasculha o diretório onde está inserido e procura pelo log
+	do Jmeter .csv. Depois ele insere na tabela do banco de dados;
+
+	2 - script_tabulacao_no_banco -> Tabula o timestamp em data, minuto e segundo e insere na tabela
+	arquivo_tabulado;
+
+	3 - Script_tempos_de_resposta -> Coleta os dados da tabela arquivo_tabulado, calculo o P95 e P99
+	e insere na tabela tempos_de_resposta.
+
+Após a execução dos scripts e os dados estiverem persistidos no banco de dados pode-se utilizar diversas
+ferramentas para que possam plotar essa informação em gráficos. Exemplo: Excel e PowerBI
