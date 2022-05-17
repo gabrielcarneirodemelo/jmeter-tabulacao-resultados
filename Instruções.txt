@@ -12,7 +12,12 @@ Executar o script criacao_tabelas_postgresql.py
 Inserir dentro do mesmo diretório do script o arquivo que será inserido no banco.
 OBS: DEVE HAVER APENAS 1 ARQUIVO .CSV NO DIRETÓRIO pois o script identifica o arquivo sozinho
 
-Executar com o comando: python script_insercao_SEM_tabular.py
+Sequência de execução dos scripts:
+	1 - script_insercao_SEM_tabular;
+	2 - script_tabulacao_no_banco;
+	3 - Script_tempos_de_resposta.
+	
+Para executar o comando basta: python script_insercao_SEM_tabular.py
 
 Depois dos dados serem inseridos no banco basta linkar com as planilhas de Excel ou PowerBI por exemplo.
 
