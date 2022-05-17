@@ -1,12 +1,13 @@
 Requisitos:
 	* Necessita ter o python;
-
 	* Necessita ter o PostgreSQL;
 	* Necessita instalar as bibliotecas do Python contidas nos arquivos.
 
 No Postgresql criar o database"Arquivos_sem_tabular";
 
 Configurar o nome do Host e senha no arquivo "Configuracao_banco.py";
+
+Executar o script criacao_tables_postgresql.py
 
 Inserir dentro do mesmo diretório do script o arquivo que será inserido no banco.
 OBS: DEVE HAVER APENAS 1 ARQUIVO .CSV NO DIRETÓRIO pois o script identifica o arquivo sozinho
