@@ -21,7 +21,7 @@ def temposDeResposta():
     
     insert = "INSERT INTO tempos_de_resposta(hora,sistema,elapsed,label,qtdlabel,responsecode,success,qtdsuccess,allthreads,p95,p99) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     
-    print(sistema)
+    
     
 
     try:
