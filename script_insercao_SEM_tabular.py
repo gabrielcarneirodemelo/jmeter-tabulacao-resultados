@@ -9,6 +9,7 @@ from datetime import datetime
 pd.options.mode.chained_assignment = None  # default='warn'
 import psycopg2
 from psycopg2 import Error
+import psycopg2.extras
 from Configuracao_banco import *
 
 def insercaoNoBanco():
@@ -17,6 +18,8 @@ def insercaoNoBanco():
     i=0
 
     ini = time.time()
+    
+    insert = "INSERT INTO arquivo(Sistema,timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
     try:
         # Connect to an existing database
@@ -41,10 +44,12 @@ def insercaoNoBanco():
  
             chunk.insert(0, "Sistema", sistema)
         
-            insert = "INSERT INTO arquivo(Sistema,timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    
+            
+            
+                
             for index, row in chunk.iterrows():
-                cursor.execute(insert, (str(row.Sistema),row.timeStamp,row.elapsed, str(row.label),row.responseCode, str(row.responseMessage), str(row.threadName), str(row.dataType), str(row.success), str(row.failureMessage),row.bytes, row.sentBytes, row.grpThreads, row.allThreads, str(row.URL), row.Latency, row.IdleTime, row.Connect))
+                vals = [(str(row.Sistema),row.timeStamp,row.elapsed, str(row.label),row.responseCode, str(row.responseMessage), str(row.threadName), str(row.dataType), str(row.success), str(row.failureMessage),row.bytes, row.sentBytes, row.grpThreads, row.allThreads, str(row.URL), row.Latency, row.IdleTime, row.Connect)]
+                psycopg2.extras.execute_batch(cursor,insert,vals)
             connection.commit()
     
 
